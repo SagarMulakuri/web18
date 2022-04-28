@@ -34,50 +34,26 @@
   </body>
   <script>
     //you need to code here
-    document.querySelector("#form").addEventListener("submit" ,jobSubmit);
-    jobArr=[]
 
+    document.querySelector("#form").addEventListener("submit", jobSubmit);
+    var jobArr = JSON.parse(localStorage.getItem("jobList")) || [];
 
-    function jobSubmit(){
-        event.preventDefault();
+    function jobSubmit() {
+      event.preventDefault();
 
-        var jobObj={
-            personName:document.querySelector("#name").value,
-            personEmail:form.email.value,
-            personRole:form.role.value,
-            personSalary:form.salary.value,
-        };
-        jobArr.push(jobObj);
-        console.log(jobArr)
-        localStorage.setItem("jobList",JSON.stringify(jobArr));
-        
+      // formId.inputId.value
 
+      var jobObj = {
+        personName: document.querySelector("#name").value,
+        personEmail: form.email.value,
+        personRole: form.role.value,
+        personSalary: form.salary.value,
+      };
+      jobArr.push(jobObj);
+      console.log(jobArr);
+      localStorage.setItem("jobList", JSON.stringify(jobArr));
+      // redirect to applied jobs
+      window.location.href = "applied.html";
     }
-
-
-
-
-
-
-    // document.querySelector("#form").addEventListener("submit", jobSubmit);
-    // var jobArr = JSON.parse(localStorage.getItem("jobList")) || [];
-
-    // function jobSubmit() {
-    //   event.preventDefault();
-
-    //   // formId.inputId.value
-
-    //   var jobObj = {
-    //     personName: document.querySelector("#name").value,
-    //     personEmail: form.email.value,
-    //     personRole: form.role.value,
-    //     personSalary: form.salary.value,
-    //   };
-    //   jobArr.push(jobObj);
-    //   console.log(jobArr);
-    //   localStorage.setItem("jobList", JSON.stringify(jobArr));
-    //   // redirect to applied jobs
-    //   window.location.href = "applied.html";
-    //}
   </script>
 </html>
