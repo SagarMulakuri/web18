@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body>div{
+            margin: auto;
+            height:auto;
+            text-align: center;
+
+        }
+        #container>div{
+            display:flex;
+            flex-direction: column;
+            width:100%;
+            height: 300px;
+            display: inline-block;
+            margin-top: 50px;
+
+
+       }
+        input{
+              display: block;
+              margin: auto ;
+              font-size: 20px;
+              padding: 2%; 
+              margin-bottom: 20px;
+            }
+       form {
+             width: 60%;
+             border: 1px solid rgb(230, 230, 230);
+             margin: 3% auto;
+             padding: 3%;
+             background: white;
+  }
+  button{
+      border-radius: 20px;
+      padding: 10px 15px 10px 15px;
+  }
+    </style>
+</head>
+<body>
+    <div id="link"><a href="signup.html"></a></div>
+    <div>
+        <img src="https://sso.masaischool.com/brand_dark.svg" alt="masai">
+    </div>
+    <div id="container">
+        <div>
+            <form id="form" >
+                <input type="text" id="email"placeholder="Enter email">
+                <input type="password"  id="password"     placeholder="Enter password">
+                <button>LOGIN</button>
+                <link rel="stylesheet" href="">
+            </form>
+        </div>
+        <div id="output">
+
+        </div>
+      </div>
+</body>
+</html>
+<script>
+      var form=document.querySelector("#form")
+     var userdata= JSON.parse(localStorage.getItem("userdata")) ;
+   
+   
+   
+   
+   
+    form.addEventListener("submit",function (event){
+        event.preventDefault();
+        
+        
+        var data={
+            email:form.email.value,
+            pass:form.password.value,
+        }
+    //   console.log(loged)
+      if(userdata===null){
+          alert("Please create an account")
+      }else if(userdata.emails==data.email && userdata.passwords==data.pass){
+          alert("Sign in Successful");
+          localStorage.setItem("signin",JSON.stringify("userdata"));}
+          else{
+              alert("user Does Not exist")
+          }
+          
+          
+    })
+</script>
