@@ -322,7 +322,7 @@
 
        var tprice=document.createElement("h4");
        tprice.innerText=elem.price;
-       //console.log(tprice)
+       console.log(tprice)
 
        var strike= document.createElement("h6");
        strike.innerText=elem.strikedoffprice
@@ -333,14 +333,5 @@
        box.append(avatar,nam,tprice,strike,btn);
        document.querySelector("#container").append(box);
 
-   });
-   document.querySelector("button").addEventListerner("click",addthis);
-   function addthis(){
-     console.log("cliked me")
-   }
-
-
-
- 
- 
+   }); 
  </script>

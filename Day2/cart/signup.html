@@ -12,6 +12,10 @@
             text-align: center;
 
         }
+        *{
+            padding:0px;
+            margin:0px;
+        }
         #container>div{
             display:flex;
             flex-direction: column;
@@ -36,24 +40,97 @@
              padding: 3%;
              background: white;
   }
-  button{
-      border-radius: 20px;
-      padding: 10px 15px 10px 15px;
-  }
+      button{
+            border-radius: 20px;
+            padding: 15px 25px 15px 25px;
+            background-color: rgb(253, 97, 97);
+            margin: auto;
+            color:aliceblue;
+            border:none;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            align-items: center;
+           }
+           label{
+               text-align: left;
+               font-weight: bold;
+            }
+            #nav {
+            display: flex;
+            background-color: gold;
+            /* border:1px solid goldenrod; */
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            height: 100px;
+        }
+
+        #nav div {
+            display: flex;
+            justify-content: space-evenly;
+            /* border: 1px solid black; */
+            margin: 0px 15px 0px 15px;
+
+        }
+
+        p {
+            /* padding-right: 30px;
+                padding-left: 20PX; */
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        img {
+            width: 70%;
+        }
+
+        #men {
+            width: 35%;
+        }
+
+        #log {
+            width: 35%;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
     </style>
 </head>
 <body>
-    <div>
-        <img src="https://sso.masaischool.com/brand_dark.svg" alt="masai">
+    <div id="nav">
+        <div>
+           <h1>Myntra</h1>
+        </div>
+        <!-- <div id="men">
+            <div>
+                <p> <a href="mens.html">Mens</a> </p>
+            </div>
+            <div>
+                <p> <a href="womens.html">Womens</a> </p>
+            </div>
+        </div> -->
+        <div id="log">
+            <div>
+                <p> <a href="signup.html">SIGNUP</a></p>
+            </div>
+            <div>
+                <P> <a href="login.html">LOGIN</a></P>
+            </div>
+        </div>
     </div>
-    <div id="container">
+  <div id="container">
         <div>
             <div>
-                <h1>Sign Up</h1>
+                <h1>Please,SignUp</h1>
                 <form id="form" >
+                    <label for="">Enter Name</label>
                     <input type="text" id="name" placeholder="Enter your full name">
+                    <label for="">Enter Email</label>
                     <input type="text" id="email"placeholder="Enter email">
+                    <label for="">Enter Password</label>
                     <input type="password"  id="password"     placeholder="Enter password">
+                    <label for="">Enter Number</label>
                     <input type="text" id="number" placeholder="Enter mobile number">
                     <button>SIGN UP</button>
                 </form>
