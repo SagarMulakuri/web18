@@ -145,7 +145,7 @@
 </html>
 <script>
     var form=document.querySelector("#form")
-    var userdata= JSON.parse(localStorage.getItem("userdata")) || [];
+    var userdata= JSON.parse(localStorage.getItem("userdata")) ;
     form.addEventListener("submit",function (event){
         event.preventDefault();
     //    var loginarr= JSON.parse(localStorage.getItem("loginhojavo")) || [];
@@ -157,18 +157,17 @@
             number:form.number.value,
 
         };
-    //     loginarr.push(data)
-    //   console.log(loginarr)
-      localStorage.setItem("userdata",JSON.stringify(data));
-     // data.forEach (function (elem){
-      //if(data.elem===null){
-        //alert("Please enter details")
-     // }else{
+      //userdata.push(data)
+     console.log(userdata)
+     localStorage.setItem("userdata",JSON.stringify(data));
+      if(data.elem===null){
+        alert("Please enter details")
+       }else{
+        //localStorage.setItem("userdata",JSON.stringify(userdata));
         alert("Signin sucessfull")
           window.location.href="login.html"
-       
-     //})
-    })
+       }
+        })
    
 
 

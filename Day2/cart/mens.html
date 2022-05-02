@@ -48,6 +48,12 @@
 </head>
 <body>
   <h1>Mens page</h1>
+  <select name="" id="">
+    <option value="none">select catogery</option>
+    <option value="casual">casual</option>
+    <option value="festive">festive</option>
+    <option value="party">party</option>
+  </select>
     <div id="container">
 
     </div>
@@ -309,9 +315,14 @@
       strikedoffprice: 1799,
     },
   ];
+  // var newarr=JSON.parse(localStorage.getItem("addme"))||[];
+  localStorage.setItem("myntra",JSON.stringify(mensData));
 
-  
-      mensData.forEach(function (elem){
+  var  carddata=JSON.parse(localStorage.getItem("addme"))||[];
+  var container=document.querySelector("#container");
+  function display(data){
+    container.innerHTML=null;
+  data.forEach(function (elem){
        var box = document.createElement("div");
 
        var avatar=document.createElement("img");
@@ -327,18 +338,25 @@
        var strike= document.createElement("h6");
        strike.innerText=elem.strikedoffprice
 
-       var btn=document.createElement("button");
+       var btn=document.createElement("button")
        btn.innerText="Add To Cart"
-
+       btn.addEventListener("click",function(){
+        // newarr.push(elem)
+        // localStorage.setItem("addme",JSON.stringify(newarr))
+        addtocart(elem);
+     })
        box.append(avatar,nam,tprice,strike,btn);
        document.querySelector("#container").append(box);
 
    });
-   document.querySelector("button").addEventListerner("click",addthis);
-   function addthis(){
-     console.log("cliked me")
-   }
+  }
+  display (mensData);
 
+     function addtocart(elem){
+       carddata.push(elem);
+       localStorage.setItem("addme",JSON.stringify(carddata));
+       alert("Product added successfully")
+     }
 
 
  

@@ -511,28 +511,47 @@
       strikedoffprice: 1899,
     },
   ];
-       womensData.forEach(function (elem){
-       var box = document.createElement("div");
+  localStorage.setItem("myntra",JSON.stringify(womensData));
 
-       var avatar=document.createElement("img");
-       avatar.setAttribute("src",elem.image_url)
+var  carddata=JSON.parse(localStorage.getItem("addme"))||[];
+var container=document.querySelector("#container");
+function display(data){
+  container.innerHTML=null;
+data.forEach(function (elem){
+     var box = document.createElement("div");
 
-       var nam=document.createElement("h3");
-       nam.innerText=elem.name;
+     var avatar=document.createElement("img");
+     avatar.setAttribute("src",elem.image_url)
 
-       var tprice=document.createElement("h4");
-       tprice.innerText=elem.price;
+     var nam=document.createElement("h3");
+     nam.innerText=elem.name;
 
-       var strike= document.createElement("h6");
-       strike.innerText=elem.strikedoffprice
+     var tprice=document.createElement("h4");
+     tprice.innerText=elem.price;
+     //console.log(tprice)
 
-       var btn=document.createElement("button");
-       btn.innerText="Add To Cart"
+     var strike= document.createElement("h6");
+     strike.innerText=elem.strikedoffprice
 
-       box.append(avatar,nam,tprice,strike,btn);
-       document.querySelector("#container").append(box);
+     var btn=document.createElement("button")
+     btn.innerText="Add To Cart"
+     btn.addEventListener("click",function(){
+      // newarr.push(elem)
+      // localStorage.setItem("addme",JSON.stringify(newarr))
+      addtocart(elem);
+   })
+     box.append(avatar,nam,tprice,strike,btn);
+     document.querySelector("#container").append(box);
 
-   });
+ });
+}
+display (womensData);
+
+   function addtocart(elem){
+     carddata.push(elem);
+     localStorage.setItem("addme",JSON.stringify(carddata));
+     alert("Product added successfully")
+   }
 
 
 

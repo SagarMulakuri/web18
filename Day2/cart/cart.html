@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        #container{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: repeat (20,auto);
+        gap:30px;
+        
+      }
+      img{
+        border-radius: 20px;
+      }
+      #container>div{
+        display:flex;
+        border-radius: 20px;
+        flex-direction: column;
+        align-items: left;
+        justify-content: center;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
+      button{
+      border-radius: 20px;
+      padding: 15px 25px 15px 25px;
+      background-color: rgb(253, 97, 97);
+      margin: auto;
+      margin-bottom: 20px;
+      color:aliceblue;
+      align-items: center;
+      border:none;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+  h3,h4,h6{
+    text-align: left;
+    padding-left: 15px;
+  }
+  h6{
+    text-decoration: line-through;
+    font-size: .8rem;
+    line-height: 0px;
+  }
+    </style>
+</head>
+<body>
+    <h1>Total Cart Value </h1>
+    <div id="container">
+
+    </div>
+</body>
+</html>
+<script>
+      
+    var carddata=JSON.parse(localStorage.getItem("addme"))||[];
+
+  function display(carddata){
+    //   console.log("clik")
+    container.innerHTML=null;
+  carddata.forEach(function (elem){
+       var box = document.createElement("div");
+
+       var avatar=document.createElement("img");
+       avatar.setAttribute("src",elem.image_url)
+
+       var nam=document.createElement("h3");
+       nam.innerText=elem.name;
+
+       var tprice=document.createElement("h4");
+       tprice.innerText=elem.price;
+       //console.log(tprice)
+
+       var strike= document.createElement("h6");
+       strike.innerText=elem.strikedoffprice
+
+       var btn=document.createElement("button")
+       btn.innerText="Delete"
+       btn.addEventListener("click",function(){
+        // newarr.push(elem)
+        // localStorage.setItem("addme",JSON.stringify(newarr))
+        Delete(elem);
+     })
+       box.append(avatar,nam,tprice,strike,btn);
+       document.querySelector("#container").append(box);
+
+   });
+  }
+  display (carddata);
+  function Delete(elem){
+       var elem=document.querySelector("div");
+      elem.parentNode.removeChild(elem)
+  }
+
+
+</script>

@@ -76,8 +76,24 @@
             <div>
                 <P> <a href="login.html">LOGIN</a></P>
             </div>
+            <div>
+                <P> <a href="cart.html">Cart</a></P>
+            </div>
+
         </div>
     </div>
 </body>
 
 </html>
+<script>
+    var signinData=JSON.parse(localstorage.getItem("signin"));
+    var user=document.querySelector("#log");
+    if(signinData !=null){
+        user.innerHTML=`  <div>
+                <p> <a href="cart.html">SIGNUP</a></p>
+            </div>
+            <div>
+                <P> <a href="login.html">LOGIN</a></P>
+            </div>`
+    }
+</script>
