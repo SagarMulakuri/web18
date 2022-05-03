@@ -58,9 +58,9 @@
     var carddata=JSON.parse(localStorage.getItem("addme"))||[];
 
   function display(carddata){
-    //   console.log("clik")
+      console.log("clik")
     container.innerHTML=null;
-  carddata.forEach(function (elem){
+  carddata.forEach(function (elem,index){
        var box = document.createElement("div");
 
        var avatar=document.createElement("img");
@@ -81,7 +81,7 @@
        btn.addEventListener("click",function(){
         // newarr.push(elem)
         // localStorage.setItem("addme",JSON.stringify(newarr))
-        Delete(elem);
+        Delete(elem,index);
      })
        box.append(avatar,nam,tprice,strike,btn);
        document.querySelector("#container").append(box);
@@ -89,10 +89,15 @@
    });
   }
   display (carddata);
-  function Delete(elem){
-       var elem=document.querySelector("div");
-      elem.parentNode.removeChild(elem)
+  function Delete(elem,index){
+    carddata.splice(index,1);
+    localStorage.setItem("card",JSON.stringify(carddata))
+       event.target.parentNode.remove(); //it will not delete the local storage
+      // var updateddata=JSON.parse(localStorage.getItem("carddata"));
+      // displaydata(updateddata)
+      //window.location.reload();
   }
+  // localStorage.setItem("carddata",JSON.stringify(card))
 
 
 </script>
