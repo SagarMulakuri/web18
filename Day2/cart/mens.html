@@ -48,11 +48,15 @@
 </head>
 <body>
   <h1>Mens page</h1>
-  <select name="" id="">
-    <option value="none">select catogery</option>
-    <option value="casual">casual</option>
-    <option value="festive">festive</option>
-    <option value="party">party</option>
+  <select id="SortBy" onChange="pricesort()">
+    <option ><span>Sort By</span></option>
+    <option value="Lowtohigh">Price-Low to High</option>
+    <option value="Hightolow">Price-High to Low</option>
+  </select>
+  <select id="SortBy" onChange="namesort()">
+    <option ><span>Sort By</span></option>
+    <option value="ascending"> Ascending</option>
+    <option value="descending">Descending</option>
   </select>
     <div id="container">
 
@@ -66,7 +70,7 @@
       image_url:
         "https://content.shop4reebok.com/static/Product-EX4296/reebok_EX4296_1.jpg.plp",
       name: "MEN'S REEBOK RUNNING ROADMAP SHOES",
-      price: "1170",
+      price: 1170,
       strikedoffprice: "$2599",
     },
     {
@@ -315,8 +319,10 @@
       strikedoffprice: 1799,
     },
   ];
-  // var newarr=JSON.parse(localStorage.getItem("addme"))||[];
+   var newarr=JSON.parse(localStorage.getItem("myntra"))||[];
   localStorage.setItem("myntra",JSON.stringify(mensData));
+  var mensarr=JSON.parse(localStorage.getItem("myntra"))||[];
+
 
   var  carddata=JSON.parse(localStorage.getItem("addme"))||[];
   var container=document.querySelector("#container");
@@ -357,8 +363,69 @@
        localStorage.setItem("addme",JSON.stringify(carddata));
        alert("Product added successfully")
      }
+     function pricesort(mensData){
+   var selected=document.querySelector("#SortBy").value;
+   console.log(selected)
 
 
+   if(selected=="Lowtohigh"){
+     console.log("hi")
+     mensarr.sort(function (a,b){
+      return a.price - b.price;
+    });
+      console.log( mensarr)
+      display( mensarr)
+  }
+    if(selected=="Hightolow"){
+     mensarr.sort(function (a,b){
+      return b.price - a.price;
+    });
+    console.log( mensarr)
+    display( mensarr)
+  
+   }
+  }
+  function namesort(newarr){
+   var selected=document.querySelector("#SortBy").value;
+   console.log(selected)
+
+
+   if(selected=="ascending"){
+     newarr.sort(function(a,b){
+      var x=a.name;
+     var y=b.name;
+     console.log("hi")
+    if(x>y){
+     return 1;
+    }
+    if(x<y){
+      return -1;
+    }
+    return 0;
+
+     })
+      console.log(newarr)
+      display(newarr)
+  }
+    if(selected=="descending"){
+      newarr.sort(function(a,b){
+      var x=a.name;
+     var y=b.name;
+     console.log("hi")
+    if(x>y){
+     return -1;
+    }
+    if(x<y){
+      return 1;
+    }
+    return 0;
+
+     })
+      console.log(newarr)
+      display(newarr)
+  }
+
+  }
  
  
  </script>

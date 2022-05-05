@@ -48,6 +48,16 @@
 </head>
 <body>
   <h1>Womens page</h1>
+  <select id="SortBy" onChange="pricesort()">
+    <option ><span>Sort By</span></option>
+    <option value="Lowtohigh">Price-Low to High</option>
+    <option value="Hightolow">Price-High to Low</option>
+  </select>
+  <select id="SortBy" onChange="namesort()">
+    <option ><span>Sort By</span></option>
+    <option value="ascending"> Ascending</option>
+    <option value="descending">Descending</option>
+  </select>
     <div id="container">
 
     </div>
@@ -512,6 +522,8 @@
     },
   ];
   localStorage.setItem("myntra",JSON.stringify(womensData));
+  var womensarr=JSON.parse(localStorage.getItem("myntra"))||[];
+  var namesorts=JSON.parse(localStorage.getItem("myntra"))||[];
 
 var  carddata=JSON.parse(localStorage.getItem("addme"))||[];
 var container=document.querySelector("#container");
@@ -552,7 +564,52 @@ display (womensData);
      localStorage.setItem("addme",JSON.stringify(carddata));
      alert("Product added successfully")
    }
+   function pricesort(womensData){
+   var selected=document.querySelector("#SortBy").value;
+   console.log(selected)
 
+
+   if(selected=="Lowtohigh"){
+     console.log("hi")
+    womensarr.sort(function (a,b){
+      return a.price - b.price;
+    });
+      console.log(womensarr)
+      display(womensarr)
+  }
+    if(selected=="Hightolow"){
+    womensarr.sort(function (a,b){
+      return b.price - a.price;
+    });
+    console.log(womensarr)
+    display(womensarr)
+  
+   }
+  }
+  function namesort(womensData){
+   var selected=document.querySelector("#SortBy").value;
+   console.log(selected)
+
+
+   if(selected=="ascending"){
+     console.log("hi")
+    namesorts.sort(function (a,b){
+      a>b
+     return 1;
+    });
+      console.log(namesorts)
+      display(namesorts)
+  }
+    if(selected=="descending"){
+    namesorts.sort(function (a,b){
+      a<b
+      return -1;
+    });
+    console.log(namesorts)
+    display(namesorts)
+  
+   }
+  }
 
 
 
